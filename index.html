@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<title>Happy</title>  
+<link rel="shortcut icon" href="imgs/happy.ico" type="image/ico">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js'></script>
+<script src='https://www.workshape.io/js/geo/d3.geo.zoom.js'></script>
+<!--
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+-->
+</head>
+
+<body>
+<script src="js/index.js"></script>
+
+<div class="topRow"><h1>How happy are we?</h1>
+	<div class="leftTopRow">
+This globe shows the the happiness of countries in the world using Gallup World Poll data.
+	</div>
+	<div class="rightTopRow">
+The scatter plot shows the happiness score compared to one of six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity.
+	</div>
+<a href="about.html">about</a>
+</div>
+
+<div ng-app="myapp">
+    <div ng-controller="ctrl1">
+    	<globe data="data"></globe>
+    </div>
+</div>
+
+<script src='happyController.js'></script>
+
+<div class="bottomRow"><a href="about.html">about</div>
+
+<!--<script src='countryController.js'></script>-->
+<!--<script src='controller_beta.js'></script>-->
+<!--<script src='controller_alpha.js'></script>-->
+<!--<div ng-app="myapp">
+    <div ng-controller="ctrl1">
+        <globe data="data"></globe>
+    </div>
+</div>-->
+
+</body>
+</html>
+
+
+
+
+

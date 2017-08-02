@@ -1,0 +1,216 @@
+
+/* https://coolors.co/26532b-98f2b6-1c6e8c-4d4847-f4f4f9 */
+:root {
+  --main-bg-color: #40434E;
+  --main-color: #F4F4F9;
+  --globe-water-color: #586F7C;
+  --globe-grid-color: #F4F4F9;
+  --country-outline-color: #F4F4F9;
+  --scatter-trendline-color: #F4F4F9;;
+}
+
+body {
+    margin: 20px;
+    font-family: 'Spectral', serif;
+    background-color: var(--main-bg-color);
+    overflow:visible;
+    position: relative;
+    font-size: 1em;
+}
+
+h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Spectral', serif;
+    font-size: 2em;
+    color: var(--main-color);
+    /*text-shadow: 2px 8px 6px #AAAAAA,
+                 0px -3px 35px rgba(255,255,255,0.1);*/
+}
+
+h2 {
+    font-family: 'Spectral', serif;
+    font-size: 1.6em;
+    color: var(--main-color);
+}
+
+p {
+    font-family: 'Spectral', serif;
+    font-size: 1.0em;
+    color: var(--main-color);
+    margin-top: 0px;
+}
+
+div.infoTextDiv {
+    /*width:100%;*/
+    font-size: 1.2em;
+    height: 100px;
+    background-color: var(--main-bg-color);
+    outline-style: dashed;
+    outline-color: yellow;
+    color: var(--main-color);
+}
+
+
+div.scatterDiv {
+    background-color: var(--main-bg-color);
+    outline-style: dashed;
+    outline-color: blue;
+/*    overflow:visible;*/
+}
+
+
+div.topRow {
+    margin-top: 0px;
+    width: 100%;
+    height: 120px;
+    clear:both;
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+    outline-style: solid;
+    outline-color: white;
+}
+
+
+div.bottomRow {
+    margin-top: 0px;
+    width: 100%;
+    height: 120px;
+    clear:both;
+    outline-style: solid;
+    outline-color: red;
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+}
+
+
+
+div.leftTopRow {
+    line-height: 90%;
+    width:50%;
+    float:left;
+    height: 60px;
+    outline-style: dotted;
+    outline-color: pink;
+    /* background-color: var(--main-bg-color);
+    color: var(--main-color);*/
+}
+
+div.rightTopRow {
+    width:50%;
+    float:right;
+    height: 60px;
+    outline-style: dotted;
+    outline-color: grey;
+    line-height: 90%;
+    /*     background-color: var(--main-bg-color);
+    color: var(--main-color);*/
+}
+
+
+@media screen and (max-width: 850px) {
+div.globe {
+    width:100%;
+    /*background-color: var(--main-bg-color);*/
+    outline-style: dashed;
+    outline-color: orange;
+    overflow:visible;
+    position:relative;
+}
+div.info {
+    width:100%;
+    /*height: 100%;*/
+   /*background-color: var(--main-bg-color);*/
+    outline-style: dotted;
+    outline-color: grey;
+    overflow:visible;
+}
+}
+
+
+@media screen and (min-width: 851px) {
+div.info {
+    width:50%;
+    float:right;
+    height: 100%;
+    background-color: var(--main-bg-color);
+    outline-style: dotted;
+    outline-color: green;
+    overflow:visible;
+}
+div.globe {
+    width:50%;
+    float:left;
+    background-color: var(--main-bg-color);
+    outline-style: dashed;
+    outline-color: orange;
+    overflow:visible;
+    position:relative;
+}
+}
+
+svg {
+    width: 100%;
+}
+
+path {
+    fill: none;
+    stroke: var(--main-color);
+}
+
+.axis line {
+    fill: none;
+    stroke: var(--main-color);
+    shape-rendering: auto;
+    color: var(--main-color);
+}
+
+.colorAxis line{
+    stroke: var(--main-color);
+}
+
+.scatterAxis line{
+    stroke: var(--main-color);
+}
+
+.scatterAxis path{
+    stroke: var(--main-color);
+}
+
+.scatterAxis {
+    color: var(--main-color);
+    fill: var(--main-color);
+}  
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 21px
+    color: var(--main-color);
+}
+   
+.background {
+    fill: var(--globe-water-color);
+    stroke-width: .8px;
+    stroke: none;
+}
+
+.graticule {
+    stroke: var(--globe-grid-color);
+    stroke-width: .5px;
+}
+
+.country {
+    cursor: pointer;
+}
+
+.country .land {
+    stroke: var(--country-outline-color);
+    stroke-width .5px;
+}
+
+.trend {
+    opacity: .6;
+    stroke: var(--scatter-trendline-color);
+    stroke-width:10px;
+    stroke-linecap: round;
+}
