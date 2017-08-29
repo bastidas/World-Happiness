@@ -1,16 +1,20 @@
 
 /* https://coolors.co/26532b-98f2b6-1c6e8c-4d4847-f4f4f9 */
 :root {
-  --main-bg-color: #40434E;
-  --main-color: #F4F4F9;
-  --globe-water-color: #586F7C;
-  --globe-grid-color: #F4F4F9;
-  --country-outline-color: #F4F4F9;
-  --scatter-trendline-color: #F4F4F9;;
+  --main-bg-color: #F4F4F9;
+  --main-color: #40434E;
+  --off-color: #1C6E8C;
+  --globe-water-color: #F4F4F9;
+  --globe-grid-color: #40434E;
+  --country-outline-color: #40434E;
+  --scatter-trendline-color: #40434E;
+  --border-status: none;
 }
 
+
+
 body {
-    margin: 20px;
+    margin: 10px;
     font-family: 'Spectral', serif;
     background-color: var(--main-bg-color);
     overflow:visible;
@@ -18,17 +22,35 @@ body {
     font-size: 1em;
 }
 
+a:link {
+    text-decoration: none;
+    color: var(--off-color);
+}
+
+a:unvisited {
+    text-decoration: none;
+        color: var(--off-color);
+}
+
+a:visited {
+    text-decoration: none;
+        color: var(--off-color);
+}
+
 h1 {
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     font-family: 'Spectral', serif;
     font-size: 2em;
     color: var(--main-color);
+    line-height: 100%;
     /*text-shadow: 2px 8px 6px #AAAAAA,
                  0px -3px 35px rgba(255,255,255,0.1);*/
 }
 
 h2 {
+    margin-top: 0px;
+    margin-bottom: 10px;
     font-family: 'Spectral', serif;
     font-size: 1.6em;
     color: var(--main-color);
@@ -46,7 +68,7 @@ div.infoTextDiv {
     font-size: 1.2em;
     height: 100px;
     background-color: var(--main-bg-color);
-    outline-style: dashed;
+    outline-style: var(--border-status);
     outline-color: yellow;
     color: var(--main-color);
 }
@@ -54,20 +76,22 @@ div.infoTextDiv {
 
 div.scatterDiv {
     background-color: var(--main-bg-color);
-    outline-style: dashed;
+    outline-style: var(--border-status);
     outline-color: blue;
 /*    overflow:visible;*/
 }
 
 
 div.topRow {
+    margin-left:20px;
+    margin-right: 20px;
     margin-top: 0px;
-    width: 100%;
+    /*width: 100%;*/
     height: 120px;
     clear:both;
     background-color: var(--main-bg-color);
     color: var(--main-color);
-    outline-style: solid;
+    outline-style: var(--border-status);
     outline-color: white;
 }
 
@@ -75,14 +99,13 @@ div.topRow {
 div.bottomRow {
     margin-top: 0px;
     width: 100%;
-    height: 120px;
+    height: 50px;
     clear:both;
-    outline-style: solid;
+    outline-style: var(--border-status);
     outline-color: red;
     background-color: var(--main-bg-color);
     color: var(--main-color);
 }
-
 
 
 div.leftTopRow {
@@ -90,7 +113,7 @@ div.leftTopRow {
     width:50%;
     float:left;
     height: 60px;
-    outline-style: dotted;
+    outline-style: var(--border-status);
     outline-color: pink;
     /* background-color: var(--main-bg-color);
     color: var(--main-color);*/
@@ -100,7 +123,7 @@ div.rightTopRow {
     width:50%;
     float:right;
     height: 60px;
-    outline-style: dotted;
+    outline-style: var(--border-status);
     outline-color: grey;
     line-height: 90%;
     /*     background-color: var(--main-bg-color);
@@ -108,33 +131,32 @@ div.rightTopRow {
 }
 
 
-@media screen and (max-width: 850px) {
+/* for small screens */
+@media all and (max-width: 890px), (orientation: portrait) {
 div.globe {
     width:100%;
-    /*background-color: var(--main-bg-color);*/
-    outline-style: dashed;
+    outline-style: var(--border-status);
     outline-color: orange;
     overflow:visible;
     position:relative;
 }
 div.info {
     width:100%;
-    /*height: 100%;*/
-   /*background-color: var(--main-bg-color);*/
-    outline-style: dotted;
+    outline-style: var(--border-status);
     outline-color: grey;
     overflow:visible;
 }
 }
 
-
-@media screen and (min-width: 851px) {
+/* for big screens */
+@media all and (min-width: 891px), (orientation: landscape) {
 div.info {
+    max-width:1680px;
     width:50%;
     float:right;
     height: 100%;
     background-color: var(--main-bg-color);
-    outline-style: dotted;
+    outline-style: var(--border-status);
     outline-color: green;
     overflow:visible;
 }
@@ -142,7 +164,7 @@ div.globe {
     width:50%;
     float:left;
     background-color: var(--main-bg-color);
-    outline-style: dashed;
+    outline-style: var(--border-status);
     outline-color: orange;
     overflow:visible;
     position:relative;

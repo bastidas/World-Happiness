@@ -2,12 +2,16 @@
 <html >
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An exploration of the happiness of countries in the world using Gallup World Poll data.">
+<meta name="keywords" content="happy, world happiness, data, data science, data visualization, economic production, social support, life expectancy, freedom, absence of corruption, generosity ">
+<meta name="author" content="Alexander Bastidas Fry">
 <title>Happy</title>  
 <link rel="shortcut icon" href="imgs/happy.ico" type="image/ico">
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js'></script>
 <script src='https://www.workshape.io/js/geo/d3.geo.zoom.js'></script>
 <!--
@@ -16,18 +20,26 @@
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 -->
 </head>
-
 <body>
-<script src="js/index.js"></script>
+<script src="js/index_v1.1.js"></script>
 
-<div class="topRow"><h1>How happy are we?</h1>
+<div class="topRow">
+	
+	<!--<h1>How happy are we?</h1> 
+
+	<h2><a href="about.html">about</a></h2>-->
+
 	<div class="leftTopRow">
+		<h1>How happy are we?</h1> 
 This globe shows the the happiness of countries in the world using Gallup World Poll data.
 	</div>
 	<div class="rightTopRow">
+	<div align="right"><h2><a href="about.html">about</a></h2></div>
 The scatter plot shows the happiness score compared to one of six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity.
 	</div>
-<a href="about.html">about</a>
+
+<br/>
+	<div id="guessModeDiv">guess mode place holder text</div>
 </div>
 
 <div ng-app="myapp">
@@ -38,16 +50,83 @@ The scatter plot shows the happiness score compared to one of six factors – ec
 
 <script src='happyController.js'></script>
 
-<div class="bottomRow"><a href="about.html">about</div>
 
-<!--<script src='countryController.js'></script>-->
-<!--<script src='controller_beta.js'></script>-->
-<!--<script src='controller_alpha.js'></script>-->
-<!--<div ng-app="myapp">
-    <div ng-controller="ctrl1">
-        <globe data="data"></globe>
-    </div>
-</div>-->
+<div class="radarChart"></div>
+
+		<!--<script src="js/radar.js"></script>	-->
+	<!-- 	<script>
+      
+      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+      
+			////////////////////////////////////////////////////////////// 
+			//////////////////////// Set-Up ////////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+					
+			////////////////////////////////////////////////////////////// 
+			////////////////////////// Data ////////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var data = [
+					  [//iPhone
+						{axis:"Battery Life",value:0.22},
+						{axis:"Brand",value:0.28},
+						{axis:"Contract Cost",value:0.29},
+						{axis:"Design And Quality",value:0.17},
+						{axis:"Have Internet Connectivity",value:0.22},
+						{axis:"Large Screen",value:0.02},
+						{axis:"Price Of Device",value:0.21}		
+					  ],[//Samsung
+						{axis:"Battery Life",value:0.27},
+						{axis:"Brand",value:0.16},
+						{axis:"Contract Cost",value:0.35},
+						{axis:"Design And Quality",value:0.13},
+						{axis:"Have Internet Connectivity",value:0.20},
+						{axis:"Large Screen",value:0.13},
+						{axis:"Price Of Device",value:0.35}
+					  ],[//Nokia Smartphone
+						{axis:"Battery Life",value:0.26},
+						{axis:"Brand",value:0.10},
+						{axis:"Contract Cost",value:0.30},
+						{axis:"Design And Quality",value:0.14},
+						{axis:"Have Internet Connectivity",value:0.22},
+						{axis:"Large Screen",value:0.04},
+						{axis:"Price Of Device",value:0.41}
+					  ]
+					];
+			////////////////////////////////////////////////////////////// 
+			//////////////////// Draw the Chart ////////////////////////// 
+			////////////////////////////////////////////////////////////// 
+
+			var color = d3.scale.ordinal()
+				.range(["#EDC951","#CC333F","#00A0B0"]);
+				
+			var radarChartOptions = {
+			  w: width,
+			  h: height,
+			  margin: margin,
+			  maxValue: 0.5,
+			  levels: 2,
+			  roundStrokes: true,
+			  color: color
+			};
+			//Call function to draw the Radar chart
+			RadarChart(".radarChart", data, radarChartOptions);
+		</script> -->
+
+
+<div class="bottomRow"><a href="about.html">about</a> 
+</br>
+<a href="https://twitter.com/TheAstronomist">Follow on twitter<img src="imgs/bird.png" alt="TheAstronomist" style="width:30px;height:20px;"></a>
+</div>
+
+</br>
+<a href="https://github.com/bastidas/World-Happiness">Clone source on Github<img src="imgs/github.png" alt="github" style="width:25px;height:25px;"></a>
+</div>
+
 
 </body>
 </html>
