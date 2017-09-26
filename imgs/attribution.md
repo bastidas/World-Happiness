@@ -15,3 +15,11 @@ These icons are from www.flaticon.com
  * Happy icon by Icomoon from Flaticon.
 
  * Question icon by Dave Gandy from Flaticon.
+
+ * World icon  designed by Freepik from Flaticon.
+
+ * scatter plot icon designed by Freepik from Flaticon.
+
+ * thinking plot icon designed by Eucalyp from Flaticon.
+
+ * radar plot icon plot icon designed by Freepik from Flaticon.
