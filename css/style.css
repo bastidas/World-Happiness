@@ -1,35 +1,78 @@
-
-/* https://coolors.co/26532b-98f2b6-1c6e8c-4d4847-f4f4f9 */
 :root {
-  --main-bg-color: #F4F4F9;
+  --main-bg-color: #fcf5eb; /*#F4F4F9;*/
+  --best-color: #3288bd;
   --main-color: #40434E;
   --off-color: #1C6E8C;
-  --globe-water-color: #F4F4F9;
+  --globe-water-color: #F0F0E0; /*#F4F4F9;*/
   --globe-grid-color: #40434E;
   --country-outline-color: #40434E;
   --scatter-trendline-color: #40434E;
   --border-status: none;
+  --main-font:'Spectral', serif;
 }
 
-
+html{
+  padding:0;
+  margin: 0;
+  height:100%;
+}
 
 body {
-    margin: 10px;
+    padding-left:20px;
+    padding-right:20px;
+    margin: 0;
+    height:100%;
+    min-height: 100%;
+    width: 100%;
     font-family: 'Spectral', serif;
-    background-color: var(--main-bg-color);
-    overflow:visible;
-    position: relative;
     font-size: 1em;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    background-color: var(--main-bg-color);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-image: -webkit-linear-gradient(white 2px, transparent 2px),
+                      -webkit-linear-gradient(0, white 2px, transparent 2px),
+                      -webkit-linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+                      -webkit-linear-gradient(0, rgba(255,255,255,.3) 1px, transparent 1px);
+    background-image: -moz-linear-gradient(white 2px, transparent 2px),
+                      -moz-linear-gradient(0, white 2px, transparent 2px),
+                      -moz-linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+                      -moz-linear-gradient(0, rgba(255,255,255,.3) 1px, transparent 1px);
+    background-image: linear-gradient(white 2px, transparent 2px),
+                      linear-gradient(90deg, white 2px, transparent 2px),
+                      linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+    -pie-background: linear-gradient(white 2px, transparent 2px) -2px -2px / 100px,
+                     linear-gradient(90deg, white 2px, transparent 2px) -2px -2px / 100px,
+                     linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px) -1px -1px / 20px,
+                     linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px) -1px -1px / 20px,
+                     #269;
+    behavior: url(/pie/PIE.htc);
 }
+
+
+div.wrapper {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    max-width: 1280px;
+    background-color: var(--main-bg-color);
+    color: var(--main-color);
+    outline-style: var(--border-status);
+    outline-color: orange;
+    box-shadow: 0 0 15px 25px var(--main-bg-color);
+    overflow: visible;
+}
+
 
 a:link {
     text-decoration: none;
     color: var(--off-color);
-}
-
-a:unvisited {
-    text-decoration: none;
-        color: var(--off-color);
 }
 
 a:visited {
@@ -39,13 +82,13 @@ a:visited {
 
 h1 {
     margin-top: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+    letter-spacing: 5px;
     font-family: 'Spectral', serif;
-    font-size: 2em;
-    color: var(--main-color);
+    font-size: 2.5em;
+    color: var(--best-color);
     line-height: 100%;
-    /*text-shadow: 2px 8px 6px #AAAAAA,
-                 0px -3px 35px rgba(255,255,255,0.1);*/
 }
 
 h2 {
@@ -53,7 +96,7 @@ h2 {
     margin-bottom: 10px;
     font-family: 'Spectral', serif;
     font-size: 1.6em;
-    color: var(--main-color);
+    color: var(--best-color);
 }
 
 p {
@@ -63,43 +106,65 @@ p {
     margin-top: 0px;
 }
 
+.legend {
+    font-family: var(--main-font);
+    fill: var(--main-color);
+    font-size: 12px !important;
+    font-weight: 300;
+    fill: #242424;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+    cursor: default;
+}
+            
+.tooltip {
+    font-family: var(--main-font);
+    /*fill: #333333;*/
+    font-size: 14px;
+    font-weight: 300;
+    /*fill: #242424;*/
+    text-align: center;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+    cursor: default;
+    overflow: visible;
+}
+
+.axis text {
+    font-family: var(--main-font);
+    font-size: 12px;
+    color: var(--main-color);
+}
+
+
+
 div.infoTextDiv {
-    /*width:100%;*/
-    font-size: 1.2em;
-    height: 100px;
+    clear: both;
+    font-size: 1.0em;
+    height: 100%;
     background-color: var(--main-bg-color);
     outline-style: var(--border-status);
     outline-color: yellow;
     color: var(--main-color);
 }
 
-
-div.scatterDiv {
-    background-color: var(--main-bg-color);
-    outline-style: var(--border-status);
-    outline-color: blue;
-/*    overflow:visible;*/
-}
-
-
 div.topRow {
-    margin-left:20px;
-    margin-right: 20px;
+    margin-left:0px;
+    margin-right: 0px;
     margin-top: 0px;
     /*width: 100%;*/
-    height: 120px;
+    height: 80px;
     clear:both;
     background-color: var(--main-bg-color);
     color: var(--main-color);
     outline-style: var(--border-status);
-    outline-color: white;
+    outline-color: red;
 }
 
 
 div.bottomRow {
     margin-top: 0px;
     width: 100%;
-    height: 50px;
+    /*height: 50px;*/
     clear:both;
     outline-style: var(--border-status);
     outline-color: red;
@@ -115,8 +180,6 @@ div.leftTopRow {
     height: 60px;
     outline-style: var(--border-status);
     outline-color: pink;
-    /* background-color: var(--main-bg-color);
-    color: var(--main-color);*/
 }
 
 div.rightTopRow {
@@ -126,21 +189,19 @@ div.rightTopRow {
     outline-style: var(--border-status);
     outline-color: grey;
     line-height: 90%;
-    /*     background-color: var(--main-bg-color);
-    color: var(--main-color);*/
 }
 
 
 /* for small screens */
 @media all and (max-width: 890px), (orientation: portrait) {
-div.globe {
+div.leftDiv {
     width:100%;
     outline-style: var(--border-status);
-    outline-color: orange;
+    outline-color: blue;
     overflow:visible;
     position:relative;
 }
-div.info {
+div.rightDiv {
     width:100%;
     outline-style: var(--border-status);
     outline-color: grey;
@@ -149,30 +210,35 @@ div.info {
 }
 
 /* for big screens */
-@media all and (min-width: 891px), (orientation: landscape) {
-div.info {
-    max-width:1680px;
+@media all and (min-width: 800px), (orientation: landscape) {
+div.rightDiv {
+    /*max-width:0px;*/
+    /*max-width:1680px;*/
     width:50%;
-    float:right;
-    height: 100%;
+    float: left;
+    /*: 100%;*/
     background-color: var(--main-bg-color);
     outline-style: var(--border-status);
     outline-color: green;
     overflow:visible;
 }
-div.globe {
-    width:50%;
-    float:left;
+div.leftDiv {
+    width: 50%;
+    float: left;
     background-color: var(--main-bg-color);
     outline-style: var(--border-status);
-    outline-color: orange;
+    outline-color: cyan;
     overflow:visible;
     position:relative;
 }
 }
 
-svg {
-    width: 100%;
+.modeSelectors {
+    float: left;
+    margin-top: 0px;
+    margin-left: 15px;
+    border: var(--border-status);
+    border-color: red;
 }
 
 path {
@@ -204,11 +270,11 @@ path {
     fill: var(--main-color);
 }  
 
-.axis text {
-    font-family: sans-serif;
+/*.axis text {
+    font-family: var(--main-font);
     font-size: 21px
     color: var(--main-color);
-}
+}*/
    
 .background {
     fill: var(--globe-water-color);
@@ -227,7 +293,7 @@ path {
 
 .country .land {
     stroke: var(--country-outline-color);
-    stroke-width .5px;
+    stroke-width: .5px;
 }
 
 .trend {
@@ -235,4 +301,71 @@ path {
     stroke: var(--scatter-trendline-color);
     stroke-width:10px;
     stroke-linecap: round;
+}
+
+#share-buttons img{
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding: 10px;
+    align-self: center;
+    border: none;
+    position: absolute;
+    display: inline;
+    -webkit-transition: width .4s, height .4s, margin-left .4s, margin-top .4s;
+    transition: width .4s, height .4s, margin-left .4s, margin-top .4s;
+}
+
+#l1 img {
+    width: 40px;
+    height: 40px;
+    margin-left: -120px;
+ }
+ 
+ #l2 img {
+    width: 40px;
+    height: 40px;
+    margin-left: -40px;
+ }
+
+
+#l3 img {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+ }
+
+
+ #l4 img {
+    width: 40px;
+    height: 40px;
+    margin-left: 120px;
+ }
+
+#l1 img:hover {
+    width: 50px;
+    height: 50px;
+    margin-left: -125px;
+    margin-top: -5px;
+}
+
+#l2 img:hover {
+    width: 50px;
+    height: 50px;
+    margin-left: -45px;
+    margin-top: -5px;
+}
+
+
+#l3 img:hover {
+    width: 50px;
+    height: 50px;
+    margin-left: 35px;
+    margin-top: -5px;
+}
+
+#l4 img:hover {
+    width: 50px;
+    height: 50px;
+    margin-left: 115px;
+    margin-top: -5px;
 }
