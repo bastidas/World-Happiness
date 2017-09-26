@@ -3,131 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="An exploration of the happiness of countries in the world using Gallup World Poll data.">
+<meta name="description" content="An interactive visual exploration of the state of global happiness including six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity  – that strongly contribute to making life evaluations higher.">
 <meta name="keywords" content="happy, world happiness, data, data science, data visualization, economic production, social support, life expectancy, freedom, absence of corruption, generosity ">
 <meta name="author" content="Alexander Bastidas Fry">
-<title>Happy</title>  
+<title>World Happiness</title>  
 <link rel="shortcut icon" href="imgs/happy.ico" type="image/ico">
+
+
+ <meta property="og:url"           content="http://www.alexanderbastidasfry.com/happy" />
+ <meta property="og:type"          content="website" />
+ <meta property="og:title"         content="World Happiness" />
+ <meta property="og:description"   content="An interactive visual exploration of the state of global happiness including six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity  – that strongly contribute to making life evaluations higher." />
+ <meta property="og:image"         content="imgs/happy.png">
+
+
+
+
+
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Spectral" rel="stylesheet"> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js'></script>
 <script src='https://www.workshape.io/js/geo/d3.geo.zoom.js'></script>
-<!--
-<script src="https://d3js.org/d3-color.v1.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
--->
 </head>
 <body>
-<script src="js/index_v1.1.js"></script>
+<script src="js/index.js"></script>
 
-<div class="topRow">
-	
-	<!--<h1>How happy are we?</h1> 
-
-	<h2><a href="about.html">about</a></h2>-->
-
-	<div class="leftTopRow">
-		<h1>How happy are we?</h1> 
-This globe shows the the happiness of countries in the world using Gallup World Poll data.
-	</div>
-	<div class="rightTopRow">
-	<div align="right"><h2><a href="about.html">about</a></h2></div>
-The scatter plot shows the happiness score compared to one of six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity.
-	</div>
-
-<br/>
-	<div id="guessModeDiv">guess mode place holder text</div>
-</div>
+<div class="wrapper">
 
 <div ng-app="myapp">
     <div ng-controller="ctrl1">
-    	<globe data="data"></globe>
+    	<scoped data="data">
+    	</scoped>
     </div>
 </div>
 
+
 <script src='happyController.js'></script>
 
+<div class="bottomRow">
+<h2>Context</h2>
+<p>
+<a href="http://worldhappiness.report/">The World Happiness Report</a> is a landmark survey of the state of global happiness. The report reviews the state of happiness in the world today and shows how the new science of happiness explains personal and national variations in happiness. It is one approach among many to measuring humanities well-being. The report continues to gain global recognition as governments, organizations and civil society increasingly use happiness indicators to inform their policy-making decisions. It is part of a larger effort to redefine the growth narrative to put people’s well-being at the center of government’s efforts. The World Happiness Report was written by a group of independent experts across fields – economics, psychology, survey analysis, national statistics, health, public policy and more. The data visualization here is not definitive or final. The data presented here isn’t a indictment or and endorsement of any countries policies. 
+</p>
+<h2>Data</h2>
 
-<div class="radarChart"></div>
+<p>
+The data presented here is from  2017, which ranks 155 countries by their happiness levels. The happiness scores and rankings use data from the Gallup World Poll. The rankings are based on answers to the main life evaluation question asked in the poll. This is called the Cantril ladder: it asks respondents to think of a ladder, with the best possible life for them being a 10, and the worst possible life being a 0. They are then asked to rate their own current lives on that 0 to 10 scale. The rankings are from nationally representative samples. Data from previous years is combined with Gallup weights to make the sample size large enough to reduce the random sampling errors and make the estimates representative.  The six factors presented – economic production, social support, life expectancy, freedom, absence of corruption, and generosity  – were selected due to their high contribution to making life evaluations higher in each country. They have no impact on the total score reported for each country, but they do explain why some countries rank higher than others.
+</p>
+<p>
+The data analysis for this page can be seen <a href="https://github.com/bastidas/World-Happiness/blob/master/learn.ipynb ">here</a>.
+The data presented here has been normalized independently for each factor to a scale of one (least happy is zero, most happy is one). The trends shown in the scatter plots are a one dimensional linear regression fit independently for each factor.  The happiness predictions from the radar plot are based of all six factors simultaneously using regression with gradient boosting – taking into account all six factors simultaneously we can predict the happiness of many countries to within less than the errors included in the report. In this visualization errors are not shown and for many countries the predicted happiness lies below the point of the actual happiness. 
+</p>
 
-		<!--<script src="js/radar.js"></script>	-->
-	<!-- 	<script>
-      
-      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
-      
-			////////////////////////////////////////////////////////////// 
-			//////////////////////// Set-Up ////////////////////////////// 
-			////////////////////////////////////////////////////////////// 
+<div style="text-align:center;">
+	<div id="share-buttons">
+	<!--<a href="https://github.com/bastidas/World-Happiness"><img src="imgs/social/linkedin.png" alt="linkedin" style="margin-left:70px;"></a>-->
+	<div id="l1">
+	<a href="http://www.alexanderbastidasfry.com"><img src="imgs/world.png"></a></div>
+	
+	<div id="l2"><a href="https://twitter.com/TheAstronomist"><img src="imgs//twitter.png"></a></div>
+	
+	<div id="l3"><a href="https://github.com/bastidas/World-Happiness"><img src="imgs/github.png" alt="github"></a></div>
 
-			var margin = {top: 100, right: 100, bottom: 100, left: 100},
-				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-					
-			////////////////////////////////////////////////////////////// 
-			////////////////////////// Data ////////////////////////////// 
-			////////////////////////////////////////////////////////////// 
-
-			var data = [
-					  [//iPhone
-						{axis:"Battery Life",value:0.22},
-						{axis:"Brand",value:0.28},
-						{axis:"Contract Cost",value:0.29},
-						{axis:"Design And Quality",value:0.17},
-						{axis:"Have Internet Connectivity",value:0.22},
-						{axis:"Large Screen",value:0.02},
-						{axis:"Price Of Device",value:0.21}		
-					  ],[//Samsung
-						{axis:"Battery Life",value:0.27},
-						{axis:"Brand",value:0.16},
-						{axis:"Contract Cost",value:0.35},
-						{axis:"Design And Quality",value:0.13},
-						{axis:"Have Internet Connectivity",value:0.20},
-						{axis:"Large Screen",value:0.13},
-						{axis:"Price Of Device",value:0.35}
-					  ],[//Nokia Smartphone
-						{axis:"Battery Life",value:0.26},
-						{axis:"Brand",value:0.10},
-						{axis:"Contract Cost",value:0.30},
-						{axis:"Design And Quality",value:0.14},
-						{axis:"Have Internet Connectivity",value:0.22},
-						{axis:"Large Screen",value:0.04},
-						{axis:"Price Of Device",value:0.41}
-					  ]
-					];
-			////////////////////////////////////////////////////////////// 
-			//////////////////// Draw the Chart ////////////////////////// 
-			////////////////////////////////////////////////////////////// 
-
-			var color = d3.scale.ordinal()
-				.range(["#EDC951","#CC333F","#00A0B0"]);
-				
-			var radarChartOptions = {
-			  w: width,
-			  h: height,
-			  margin: margin,
-			  maxValue: 0.5,
-			  levels: 2,
-			  roundStrokes: true,
-			  color: color
-			};
-			//Call function to draw the Radar chart
-			RadarChart(".radarChart", data, radarChartOptions);
-		</script> -->
-
-
-<div class="bottomRow"><a href="about.html">about</a> 
-</br>
-<a href="https://twitter.com/TheAstronomist">Follow on twitter<img src="imgs/bird.png" alt="TheAstronomist" style="width:30px;height:20px;"></a>
+	<div id="l4"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.alexanderbastidasfry.com/happy"><img src="imgs/facebook.png" alt="facebook"></a></div>
+	</div>
 </div>
 
-</br>
-<a href="https://github.com/bastidas/World-Happiness">Clone source on Github<img src="imgs/github.png" alt="github" style="width:25px;height:25px;"></a>
+<br>
+
+<br>
+
+
+
+
 </div>
-
-
 </body>
 </html>
 
