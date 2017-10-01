@@ -1274,7 +1274,7 @@ function updateInfo(x) {
         newText += countryName + " has a happiness of " + (scope.data[x.id].happy).toFixed(2) + " and is in the bottom quartile of happy countries.";
     }
 
-    if (scope.data[x.id].happy - scope.data[x.id].pred >= .04) { //the mean absolute error is ~.2
+    if (scope.data[x.id].happy - scope.data[x.id].pred >= .04) { //the mean absolute error is ~.2 (non normalized), and .037 normalized 
         newText += " It has a happiness that is greater than the prediction (" + (scope.data[x.id].pred).toFixed(2) + ") given all the measures here.";
     }
     else if (scope.data[x.id].happy - scope.data[x.id].pred <= -.04) { 
