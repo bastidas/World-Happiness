@@ -14,7 +14,7 @@
  <meta property="og:type"          content="website" />
  <meta property="og:title"         content="World Happiness" />
  <meta property="og:description"   content="An interactive visual exploration of the state of global happiness including six factors – economic production, social support, life expectancy, freedom, absence of corruption, and generosity  – that strongly contribute to making life evaluations higher." />
- <meta property="og:image"         content="imgs/happy.png">
+ <meta property="og:image"         content="http://www.alexanderbastidasfry.com/happy/imgs/social.jpg">
 
 
 
@@ -43,9 +43,10 @@
 <script src='happyController.js'></script>
 
 <div class="bottomRow">
+
 <h2>Context</h2>
 <p>
-<a href="http://worldhappiness.report/">The World Happiness Report</a> is a landmark survey of the state of global happiness. The report reviews the state of happiness in the world today and shows how the new science of happiness explains personal and national variations in happiness. It is one approach among many to measuring humanities well-being. The report continues to gain global recognition as governments, organizations and civil society increasingly use happiness indicators to inform their policy-making decisions. It is part of a larger effort to redefine the growth narrative to put people’s well-being at the center of government’s efforts. The World Happiness Report was written by a group of independent experts across fields – economics, psychology, survey analysis, national statistics, health, public policy and more. The data visualization here is not definitive or final. The data presented here isn’t a indictment or and endorsement of any countries policies. 
+<a href="http://worldhappiness.report/">The World Happiness Report</a> is a landmark survey of the state of global happiness. The report reviews the state of happiness in the world and shows how the science of happiness explains personal and national variations in happiness. It is one approach to measuring humanities well-being. The report continues to gain global recognition as governments, organizations and civil society increasingly use happiness indicators to inform their policy-making decisions. It is part of a larger effort to redefine the growth narrative to put people’s well-being at the center of government’s efforts. The World Happiness Report was written by a group of independent experts across fields – economics, psychology, survey analysis, national statistics, health, public policy and more.
 </p>
 <h2>Data</h2>
 
@@ -54,7 +55,8 @@ The data presented here is from  2017, which ranks 155 countries by their happin
 </p>
 <p>
 The data analysis for this page can be seen <a href="https://github.com/bastidas/World-Happiness/blob/master/learn.ipynb ">here</a>.
-The data presented here has been normalized independently for each factor to a scale of one (least happy is zero, most happy is one). The trends shown in the scatter plots are a one dimensional linear regression fit independently for each factor.  The happiness predictions from the radar plot are based of all six factors simultaneously using regression with gradient boosting – taking into account all six factors simultaneously we can predict the happiness of many countries to within less than the errors included in the report. In this visualization errors are not shown and for many countries the predicted happiness lies below the point of the actual happiness. 
+The data presented here has been normalized independently for each factor to a scale of one (least happy is zero, most happy is one). The trends shown in the scatter plots are a one dimensional linear regression fit independently for each factor.  The happiness predictions from the radar plot are based of all six factors simultaneously using regression with gradient boosting – taking into account all six factors simultaneously we can predict the happiness of many countries to within less than the errors included in the report. In this visualization errors are not shown and for many countries the predicted happiness lies below the point of the actual happiness. The data visualization here is not definitive or final. There are many more portals on the web to <a href="
+https://ourworldindata.org/happiness-and-life-satisfaction/">explore happiness and life satisfaction</a> further. I hope this work illuminates and raises questions.
 </p>
 
 <div style="text-align:center;">

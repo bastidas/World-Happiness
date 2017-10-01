@@ -14,8 +14,6 @@ These icons are from www.flaticon.com
 
  * Happy icon by Icomoon from Flaticon.
 
- * Question icon by Dave Gandy from Flaticon.
-
  * World icon  designed by Freepik from Flaticon.
 
  * scatter plot icon designed by Freepik from Flaticon.

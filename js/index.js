@@ -17,6 +17,7 @@ var buttonDefaultAlpha = ".35";
 var buttonHoverAlpha = "0.8";
 var buttonPressedAlpha = "1.0";
 
+var buttonBoxHeight = 68;
 var showRadarMultiple = false;
 
 var bWidth= 50; 
@@ -54,15 +55,10 @@ var radarChartOptions = {
     };
 
 //scatter plot scale
-var mapDomainStart = 0.0;//2;
-var mapDomainEnd = 1.0;//7.6;
-//     //.range(["#2c7bb6", "#00a6ca","#00ccbc","#90eb9d","#ffff8c","#f9d057","#f29e2e","#e76818","#d7191c"]);
-//     //.range(["#2c7bb6","#90eb9d","#f29e2e","#d7191c"]);
+var mapDomainStart = 0.0;
+var mapDomainEnd = 1.0;
 
 var colorScale = d3.scale.linear()
-    //.domain([mapDomainStart, 2.5,3,4,5,6,7, mapDomainEnd])
-    //.range(['#d53e4f','#f46d43','#fdae61','#fee08b','#e6f598','#abdda4','#66c2a5','#3288bd']);
-    //.domain([mapDomainStart, 3,4,5,6, mapDomainEnd])
     .domain([mapDomainStart, .2,.4,.6,.8, mapDomainEnd])
     .range([
 '#d53e4f',
@@ -97,7 +93,7 @@ app.directive("scoped", function() {
         data: '=?'
         },
     template:
-    '<div class="leftDiv"><h1>World Happiness</h1></div>' +
+    '<div class="leftDiv"><h1>World Happiness</h1><h3> by Alexander Bastidas Fry with data from the World Happiness Report</h3></div>' +
     '<div class="rightDiv">' +
         '<div class="modeSelectors"></div>' +
         '</div>',
@@ -301,21 +297,10 @@ function radarChart(radarData, radarCountryId, options) {
         radarLine.interpolate("cardinal-closed");
     }
                 
-
-    //var radarDuration = 700;
-    //Create a wrapper for the blobs    
     var blobWrapper = g.selectAll(".radarWrapper")
-    //var blobWrapper = g.select(".radarWrapper")
         .data(radarData)
         .enter().append("g")
         .attr("class", "radarWrapper");
-        //.attr("id", x.id);
-            // tooltip
-            //     .attr('x', 0)//newX)
-            //     .attr('y', 0)//newY)
-            //     .text(scope.data[radarCountryId[i]].country)
-            //     .transition().duration(200)
-            //     .style('opacity', 1);
 
     //Append the backgrounds    
     blobWrapper.append("path")
@@ -445,19 +430,19 @@ function radarChart(radarData, radarCountryId, options) {
 
 function modeButtons() {
     var buttonBoxWidth = 250;
-    var buttonBoxHeight = 68;
 
-        var svg = d3.select(element[0])
+    var svg = d3.select(element[0])
         .select(".rightDiv .modeSelectors")
         .append("svg")
-        .attr("width", buttonBoxWidth)
+        .attr("width", "100%")
         .attr("height", buttonBoxHeight)
         .attr('viewBox', '0, 0, ' + buttonBoxWidth + ', ' + buttonBoxHeight)
         .attr("overflow", "visible");
+        //.style("align-content", "center");
 
-    toggleButtons = ['scatter', 'radar', 'info', 'reset'];
+    var toggleButtons = ['scatter', 'radar', 'info', 'reset'];
 
-    toggleText = ['scatter plot', 'radar plot', 'information', 'reset']
+    var toggleText = ['scatter plot', 'radar plot', 'information', 'reset'];
 
     var modeButtons = svg.append("g")
         .attr("id", "modeButtons")
@@ -504,10 +489,10 @@ function modeButtons() {
                 d3.select('.rightDiv')
                     .append('div')
                     .attr('class', 'infoTextDiv')
-                .text('This globe shows the happiness of countries in the world using '+
-                    'Gallup World Poll data. The scatter plot shows the happiness score compared ' +
-                    'to one of six measured factors – economic production, social support, life expectancy, ' +
-                    'freedom, absence of corruption, and generosity. The radar chart shows all six of the measured factors simultaneously for the selected country. In addition by selectecing the show predictions a prediction of the countries happiness based off all of these factors is shown; for most countries the predicted happiness is extremely close to the measured value which indicates that happiness is strongly determined by these indicators.');
+                .text("This globe shows the happiness of countries in the world using "+
+                    "Gallup World Poll data. The scatter plot shows the happiness score compared " +
+                    "to one of six measured factors – economic production, social support, life expectancy, " +
+                    "freedom, absence of corruption, and generosity. The radar chart shows all six of the measured factors simultaneously for the selected country. In addition by selectecing the thinking head icon a prediction of the country's happiness based off all of these factors is shown; for most countries the predicted happiness is extremely close to the measured value which indicates that happiness is strongly determined by these indicators.");
             }
             if (i == 3) { // reset
                 window.location.reload();
@@ -539,7 +524,7 @@ function modeButtons() {
         .attr("id", function(d, i) {return "modeText" + i;})
         .attr("x",function(d,i) {
             return 20 + (bWidth + bSpace)*i - toggleText[i].length*3;})
-        .attr("y", 5 + y0 + bHeight/.95)
+        .attr("y", bHeight + 8)
         .attr("text-anchor", "bottom")
         .attr("dominant-baseline", "central")
         .attr("fill", metricButtonTextColor)
@@ -556,8 +541,7 @@ function modeButtons() {
 
 
 function radarButtons() {
-    var buttonBoxWidth = 250;
-    var buttonBoxHeight = 68;
+    var buttonBoxWidth = 200;
 
     var radarButtonSvg = d3.select(element[0])
         .select('.rightDiv')
@@ -647,7 +631,7 @@ function radarButtons() {
         .attr("x",function(d,i) {
             return 20 + (bWidth + bSpace)*i - radarButtonsText[i].length*3;
         })
-        .attr("y", 5 + y0 + bHeight/.95)
+        .attr("y", bHeight + 8)
         .attr("text-anchor", "bottom")
         .attr("dominant-baseline", "central")
         .attr("fill", metricButtonTextColor)
@@ -655,7 +639,7 @@ function radarButtons() {
         .text(function(d, i ) {return radarButtonsText[i];});
 
     radarButtons.append("svg:image")
-        .attr("x", function(d,i) {return x0 + (bWidth + bSpace)*i;})
+        .attr("x", function(d,i) {return 0 + (bWidth + bSpace)*i;})
         .attr("y", y0)
         .attr('width', bWidth)
         .attr('height', bHeight)
@@ -665,19 +649,16 @@ function radarButtons() {
 
 
 function scatterButtons() {
-
-    var buttonBoxWidth = 480;
-    var buttonBoxHeight = 92;
+    var buttonBoxWidth = 460;
 
     var svg = d3.select(element[0])
         .select('.rightDiv')
         .append("svg")
         .attr("class", "scatterButtons")
-        .attr("width", "100%")//buttonBoxWidth)
+        .attr("width", "100%")
         .attr("height", buttonBoxHeight)
         .attr('viewBox', '0, 0, ' + buttonBoxWidth + ', ' + buttonBoxHeight)
         .attr("overflow", "visible");
-        //.style("border", "solid");
 
         var allButtons = svg.append("g")
             .attr("id", "allButtons") 
@@ -719,26 +700,25 @@ function scatterButtons() {
                     else {return buttonDefaultAlpha}             
                     });
 
-        buttonGroups.append("svg:image")
+    buttonGroups.append("svg:image")
             .attr("x", function(d,i) {return x0 + (bWidth + bSpace)*i;})
             .attr("y", y0)
             .attr('width', bWidth)
             .attr('height', bHeight)
             .attr("xlink:href", function(i) {return "imgs/" + i + ".png";});
 
-        buttonGroups.append("text")
-            .attr("class","scatterButtonTexts")
-            .attr("id", function(d, i) {return "scatterButtonText" + i;})
-            .attr("x",function(d,i) {
-                return 25 + (bWidth + bSpace)*i - scatterButtonText[i].length*3.5;
-                    })
-                .attr("y", y0 + bHeight/.98 + 8)
-                .attr("text-anchor", "bottom")
-                .attr("dominant-baseline", "central")
-                //.attr("opactiy", 0)
-                .attr("fill", metricButtonTextColor)
-                .style("opacity", 0)
-                .text(function(d, i) {return scatterButtonText[i];});
+    buttonGroups.append("text")
+        .attr("class","scatterButtonTexts")
+        .attr("id", function(d, i) {return "scatterButtonText" + i;})
+        .attr("x",function(d,i) {
+            return 25 + (bWidth + bSpace)*i - scatterButtonText[i].length*3.5;
+                })
+        .attr("y", bHeight + 8)
+        .attr("text-anchor", "bottom")
+        .attr("dominant-baseline", "central")
+        .attr("fill", metricButtonTextColor)
+        .style("opacity", 0)
+        .text(function(d, i) {return scatterButtonText[i];});
 
 }
 
@@ -1282,26 +1262,26 @@ function updateInfo(x) {
     var newText = ''
 
     if (scope.data[x.id].rank <= 39) {
-        newText += countryName + " is in the top quartile of happy countries.";
+        newText += countryName + " has a happiness of " + (scope.data[x.id].happy).toFixed(2) + " and is in the top quartile of happy countries.";
     }
     if (scope.data[x.id].rank <= 78 && scope.data[x.id].rank > 39) {
-        newText += countryName + " is in the upper middle quartile of most happy countries.";
+        newText += countryName + " has a happiness of " + (scope.data[x.id].happy).toFixed(2) + " and is in the upper middle quartile of most happy countries.";
     }  
     if (scope.data[x.id].rank <= 117 && scope.data[x.id].rank > 78) {
-        newText += countryName + " is in the bottom middle of happy countries.";
+        newText += countryName + " has a happiness of " + (scope.data[x.id].happy).toFixed(2) + " and is in the bottom middle of happy countries.";
     }  
     if (scope.data[x.id].rank > 117) {
-        newText += countryName + " is in the bottom quartile of happy countries.";
+        newText += countryName + " has a happiness of " + (scope.data[x.id].happy).toFixed(2) + " and is in the bottom quartile of happy countries.";
     }
 
-    if (scope.data[x.id].happy - scope.data[x.id].pred >= .1) { //the mean absolute error is ~.2
-        newText += " It has a happiness that is greater than would be predicted given all the measures here.";
+    if (scope.data[x.id].happy - scope.data[x.id].pred >= .04) { //the mean absolute error is ~.2
+        newText += " It has a happiness that is greater than the prediction (" + (scope.data[x.id].pred).toFixed(2) + ") given all the measures here.";
     }
-    else if (scope.data[x.id].happy - scope.data[x.id].pred <= -.1) { 
-        newText +=" It has a happiness that is less than would be predicted given all the measures here.";
+    else if (scope.data[x.id].happy - scope.data[x.id].pred <= -.04) { 
+        newText +=" It has a happiness that is less than the prediction (" + (scope.data[x.id].pred).toFixed(2) + ") given all the measures here.";
     }  
     else {
-        newText +=" It has a happiness that is about equal to the prediction given all the measures here.";
+        newText +=" It has a happiness that is about equal to the prediction (" + (scope.data[x.id].pred).toFixed(2) + ") given all the measures here.";
     }  
 
     d3.select('.rightDiv .infoTextDiv')

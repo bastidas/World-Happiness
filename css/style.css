@@ -56,7 +56,7 @@ body {
 div.wrapper {
     margin: 0 auto;
     margin-bottom: 20px;
-    margin-top: 5px;
+    margin-top: 15px;
     padding-left: 5px;
     padding-right: 5px;
     width: 100%;
@@ -87,17 +87,27 @@ h1 {
     letter-spacing: 5px;
     font-family: 'Spectral', serif;
     font-size: 2.5em;
-    color: var(--best-color);
+    /*color: var(--best-color);*/
     line-height: 100%;
 }
 
 h2 {
     margin-top: 0px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-family: 'Spectral', serif;
     font-size: 1.6em;
-    color: var(--best-color);
+    /*color: var(--best-color);*/
 }
+
+h3 {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Spectral', serif;
+    font-size: 1.0em;
+    /*color: var(--best-color);*/
+}
+
 
 p {
     font-family: 'Spectral', serif;
@@ -233,13 +243,21 @@ div.leftDiv {
 }
 }
 
-.modeSelectors {
-    float: left;
-    margin-top: 0px;
+.radarButtons {
     margin-left: 15px;
-    border: var(--border-status);
-    border-color: red;
+
 }
+
+.scatterButtons {
+    margin-left: 25px;
+
+}
+
+.modeSelectors {
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
 
 path {
     fill: none;
